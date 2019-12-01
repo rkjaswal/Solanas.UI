@@ -1,1 +1,12 @@
-  <page-router-outlet></page-router-outlet>
+  <RadSideDrawer>
+    <StackLayout tkDrawerContent class="drawer-container">
+      <Button text="Home" class="btn" textTransform="capitalize" fontSize="18" nsRouterLink="/home" [clearHistory]="true" (tap)="onSelect()"></Button>
+      <Button text="Menu" class="btn" textTransform="capitalize" fontSize="18" nsRouterLink="/menu" (tap)="onSelect()"></Button>
+      <Button text="My Basket" class="btn" textTransform="capitalize" fontSize="18" nsRouterLink="/basket" (tap)="onSelect()"></Button>
+    </StackLayout>
+    <StackLayout tkMainContent>
+      <page-router-outlet></page-router-outlet>
+    </StackLayout>
+  </RadSideDrawer>
+  
+  

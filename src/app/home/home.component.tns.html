@@ -1,7 +1,55 @@
-<app-action-bar></app-action-bar>
+<app-action-bar title="Solanas Wok & Grill" [showBackButton]="false"></app-action-bar>
 <ScrollView>
     <StackLayout>
         <Image src="~/assets/images/Restaurant Branding.png" stretch="aspectFit"></Image>
-        <Button text="Full Menu" nsRouterLink="/menu"></Button>
+        <Label>
+            <FormattedString>
+                <Span text="&#xa; &#xa;"></Span>
+            </FormattedString>
+        </Label>
+        <Label 
+            text="About Us"
+            textAlignment="center"
+            fontWeight="bold"
+            fontSize="28"
+        ></Label>
+        <Label 
+            text="Solanas Wok & Grill is a Chinese and Thai restaurant in the nest of Hongkong Bazaar, Sector-57, Gurugram. Solanas Wok & Grill offers mouth watering delicious food in the most competitive prices. Best Dimsums, Thai Curries and many more..."
+            textWrap="true"
+            textAlignment="center"
+            fontSize="18"
+            margin="10"
+        ></Label>
+        <Label>
+            <FormattedString>
+                <Span text="&#xa; &#xa;"></Span>
+            </FormattedString>
+        </Label>
+        <Label 
+            text="Featured Menu"
+            textAlignment="center"
+            fontWeight="bold"
+            fontSize="28"
+        ></Label>
+        <Label>
+            <FormattedString>
+                <Span text="&#xa; &#xa;"></Span>
+            </FormattedString>
+        </Label>
+        <Button 
+            text="Full Menu" 
+            color="white"
+            fontWeight="bold"
+            fontSize="20"
+            backgroundColor="black"
+            width="300"
+            borderRadius="5"
+            nsRouterLink="/menu"
+        ></Button>
+        <Label>
+            <FormattedString>
+                <Span text="&#xa; &#xa;"></Span>
+            </FormattedString>
+        </Label>
     </StackLayout>
 </ScrollView>

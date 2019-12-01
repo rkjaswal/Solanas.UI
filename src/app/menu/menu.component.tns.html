@@ -1,6 +1,65 @@
-<app-action-bar></app-action-bar>  
-<ScrollView>
-    <StackLayout>
-        <Button text="Home" nsRouterLink="/home" [clearHistory]=true></Button>
-    </StackLayout>
-</ScrollView>
+<app-action-bar title="Menu"></app-action-bar>  
+<Tabs selectedIndex="0">
+
+    <!-- The bottom tab UI is created via TabStrip (the containier) and TabStripItem (for each tab)-->
+    <TabStrip>
+        <TabStripItem>
+            <Label text="Soup" fontSize="18"></Label>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Dimsum" fontSize="18"></Label>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Starters" fontSize="18"></Label>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Grills" fontSize="18"></Label>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Mains & Curries" fontSize="18"></Label>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Sides" fontSize="18"></Label>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Combo Meal" fontSize="18"></Label>
+        </TabStripItem>
+    </TabStrip>
+
+    <!-- The number of TabContentItem components should corespond to the number of TabStripItem components -->
+    <TabContentItem>
+        <ScrollView>
+            <Label text="Soup" class="h2 text-center"></Label>
+        </ScrollView>
+    </TabContentItem>
+    <TabContentItem>
+        <ScrollView>
+            <Label text="Dimsum" class="h2 text-center"></Label>
+        </ScrollView>
+    </TabContentItem>
+    <TabContentItem>
+        <ScrollView>
+            <Label text="Home Page" class="h2 text-center"></Label>
+        </ScrollView>
+    </TabContentItem>
+    <TabContentItem>
+        <ScrollView>
+            <Label text="Home Page" class="h2 text-center"></Label>
+        </ScrollView>
+    </TabContentItem>
+    <TabContentItem>
+        <ScrollView>
+            <Label text="Home Page" class="h2 text-center"></Label>
+        </ScrollView>
+    </TabContentItem>
+    <TabContentItem>
+        <ScrollView>
+            <Label text="Home Page" class="h2 text-center"></Label>
+        </ScrollView>
+    </TabContentItem>
+    <TabContentItem>
+        <ScrollView>
+            <Label text="Home Page" class="h2 text-center"></Label>
+        </ScrollView>
+    </TabContentItem>
+</Tabs>
