@@ -1,1 +1,13 @@
 <p>menu</p>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Price</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let menuItem of menuItems">
+            <td>{{menuItem.name}}</td>
+            <td>{{menuItem.price}}</td>
+        </tr>
+    </tbody>
+</table>
