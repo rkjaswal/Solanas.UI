@@ -1,16 +1,16 @@
 <ActionBar [title]=title>
     <NavigationButton 
         text="Back" 
-        android.systemIcon="ic_menu_back"
+        icon="res://backicon"
         *ngIf="canGoBack"
         (tap)="onGoBack()"
     ></NavigationButton>
-    <NavigationButton *ngIf="isAndroidPhone && showMenu && !canGoBack" icon="res://menuicon" (tap)="onToggleMenu()"></NavigationButton>
-    <ActionItem *ngIf="!isAndroidPhone && showMenu && !canGoBack" icon="res://menuicon.png" ios.position="left" (tap)="onToggleMenu()"></ActionItem>
+    <NavigationButton *ngIf="isAndroidPhone && showMenu && !canGoBack" icon="res://menubaricon" (tap)="onToggleMenu()"></NavigationButton>
+    <ActionItem *ngIf="!isAndroidPhone && showMenu && !canGoBack" icon="res://icon-29.png" ios.position="left" (tap)="onToggleMenu()"></ActionItem>
     <ActionItem ios.position="right">
         <AbsoluteLayout (tap)="onBasket()">
-            <Image height="40" src="~/assets/images/CartIcon.png"></Image>
-            <Label *ngIf="false" text="0" textAlignment="center" fontWeight="bold" fontSize="16" color="white" backgroundColor="red" borderRadius="50" height="22" width="22"></Label>
+            <Image height="32" width="35" src="~/assets/images/CartIconBlack1.png"></Image>
+            <Label *ngIf="menuItemsBasket.length > 0" [text]=menuItemsBasket.length textAlignment="center" fontWeight="bold" fontSize="16" color="white" backgroundColor="red" borderRadius="50" height="22" width="22"></Label>
         </AbsoluteLayout>
     </ActionItem>
 </ActionBar> 

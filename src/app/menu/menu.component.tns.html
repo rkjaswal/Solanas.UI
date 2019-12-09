@@ -28,38 +28,129 @@
 
     <!-- The number of TabContentItem components should corespond to the number of TabStripItem components -->
     <TabContentItem>
-        <ScrollView>
-            <Label text="Soup" class="h2 text-center"></Label>
-        </ScrollView>
+        <ListView [items]="menuItemsSoup" class="list-group">
+            <ng-template let-menuItem="item">
+                <FlexboxLayout flexDirection="column">
+                    <Image src="~/assets/images/{{menuItem.imageName}}"></Image>
+                    <Label [text]="menuItem.name" textAlignment="center" textWrap="true" margin="5" fontSize="20"></Label>
+                    <Label [text]="menuItem.description" textAlignment="center" textWrap="true" margin="5" fontSize="12"></Label>
+                    <GridLayout columns="*,*">
+                        <AbsoluteLayout column=0>
+                            <Image height="30" width="30" src="~/assets/images/rupee.png" left="50"></Image>
+                            <Label [text]="menuItem.price" lineheight="50" alignment="center" fontSize="22" left="75"></Label>
+                        </AbsoluteLayout>
+                        <Button text="Add to Basket" textTransform="capitalize" column="1" marginRight="50" (tap)="onAddToBasket(menuItem.menuItemId)"></Button>
+                    </GridLayout>
+                </FlexboxLayout>
+            </ng-template>
+        </ListView>
     </TabContentItem>
     <TabContentItem>
-        <ScrollView>
-            <Label text="Dimsum" class="h2 text-center"></Label>
-        </ScrollView>
+        <ListView [items]="menuItemsDimsum" class="list-group">
+            <ng-template let-menuItem="item">
+                <FlexboxLayout flexDirection="column">
+                    <Image src="~/assets/images/{{menuItem.imageName}}"></Image>
+                    <Label [text]="menuItem.name" textAlignment="center" textWrap="true" margin="5" fontSize="20"></Label>
+                    <Label [text]="menuItem.description" textAlignment="center" textWrap="true" margin="5" fontSize="12"></Label>
+                    <GridLayout columns="*,*">
+                        <AbsoluteLayout column=0>
+                            <Image height="30" width="30" src="~/assets/images/rupee.png" left="50"></Image>
+                            <Label [text]="menuItem.price" lineheight="50" alignment="center" fontSize="22" left="75"></Label>
+                        </AbsoluteLayout>
+                        <Button text="Add to Basket" textTransform="capitalize" column="1" marginRight="50" (tap)="onAddToBasket(menuItem.menuItemId)"></Button>
+                    </GridLayout>
+                </FlexboxLayout>
+            </ng-template>
+        </ListView>
     </TabContentItem>
     <TabContentItem>
-        <ScrollView>
-            <Label text="Home Page" class="h2 text-center"></Label>
-        </ScrollView>
+        <ListView [items]="menuItemsSoup" class="list-group">
+            <ng-template let-menuItem="item">
+                <FlexboxLayout flexDirection="column">
+                    <Image src="~/assets/images/{{menuItem.imageName}}"></Image>
+                    <Label [text]="menuItem.name" textAlignment="center" textWrap="true" margin="5" fontSize="20"></Label>
+                    <Label [text]="menuItem.description" textAlignment="center" textWrap="true" margin="5" fontSize="12"></Label>
+                    <GridLayout columns="*,*">
+                        <AbsoluteLayout column=0>
+                            <Image height="30" width="30" src="~/assets/images/rupee.png" left="50"></Image>
+                            <Label [text]="menuItem.price" lineheight="50" alignment="center" fontSize="22" left="75"></Label>
+                        </AbsoluteLayout>
+                        <Button text="Add to Basket" textTransform="capitalize" column="1" marginRight="50" (tap)="onAddToBasket(menuItem.menuItemId)"></Button>
+                    </GridLayout>
+                </FlexboxLayout>
+            </ng-template>
+        </ListView>
     </TabContentItem>
     <TabContentItem>
-        <ScrollView>
-            <Label text="Home Page" class="h2 text-center"></Label>
-        </ScrollView>
+        <ListView [items]="menuItemsSoup" class="list-group">
+            <ng-template let-menuItem="item">
+                <FlexboxLayout flexDirection="column">
+                    <Image src="~/assets/images/{{menuItem.imageName}}"></Image>
+                    <Label [text]="menuItem.name" textAlignment="center" textWrap="true" margin="5" fontSize="20"></Label>
+                    <Label [text]="menuItem.description" textAlignment="center" textWrap="true" margin="5" fontSize="12"></Label>
+                    <GridLayout columns="*,*">
+                        <AbsoluteLayout column=0>
+                            <Image height="30" width="30" src="~/assets/images/rupee.png" left="50"></Image>
+                            <Label [text]="menuItem.price" lineheight="50" alignment="center" fontSize="22" left="75"></Label>
+                        </AbsoluteLayout>
+                        <Button text="Add to Basket" textTransform="capitalize" column="1" marginRight="50" (tap)="onAddToBasket(menuItem.menuItemId)"></Button>
+                    </GridLayout>
+                </FlexboxLayout>
+            </ng-template>
+        </ListView>
     </TabContentItem>
     <TabContentItem>
-        <ScrollView>
-            <Label text="Home Page" class="h2 text-center"></Label>
-        </ScrollView>
+        <ListView [items]="menuItemsSoup" class="list-group">
+            <ng-template let-menuItem="item">
+                <FlexboxLayout flexDirection="column">
+                    <Image src="~/assets/images/{{menuItem.imageName}}"></Image>
+                    <Label [text]="menuItem.name" textAlignment="center" textWrap="true" margin="5" fontSize="20"></Label>
+                    <Label [text]="menuItem.description" textAlignment="center" textWrap="true" margin="5" fontSize="12"></Label>
+                    <GridLayout columns="*,*">
+                        <AbsoluteLayout column=0>
+                            <Image height="30" width="30" src="~/assets/images/rupee.png" left="50"></Image>
+                            <Label [text]="menuItem.price" lineheight="50" alignment="center" fontSize="22" left="75"></Label>
+                        </AbsoluteLayout>
+                        <Button text="Add to Basket" textTransform="capitalize" column="1" marginRight="50" (tap)="onAddToBasket(menuItem.menuItemId)"></Button>
+                    </GridLayout>
+                </FlexboxLayout>
+            </ng-template>
+        </ListView>
     </TabContentItem>
     <TabContentItem>
-        <ScrollView>
-            <Label text="Home Page" class="h2 text-center"></Label>
-        </ScrollView>
+        <ListView [items]="menuItemsSoup" class="list-group">
+            <ng-template let-menuItem="item">
+                <FlexboxLayout flexDirection="column">
+                    <Image src="~/assets/images/{{menuItem.imageName}}"></Image>
+                    <Label [text]="menuItem.name" textAlignment="center" textWrap="true" margin="5" fontSize="20"></Label>
+                    <Label [text]="menuItem.description" textAlignment="center" textWrap="true" margin="5" fontSize="12"></Label>
+                    <GridLayout columns="*,*">
+                        <AbsoluteLayout column=0>
+                            <Image height="30" width="30" src="~/assets/images/rupee.png" left="50"></Image>
+                            <Label [text]="menuItem.price" lineheight="50" alignment="center" fontSize="22" left="75"></Label>
+                        </AbsoluteLayout>
+                        <Button text="Add to Basket" textTransform="capitalize" column="1" marginRight="50" (tap)="onAddToBasket(menuItem.menuItemId)"></Button>
+                    </GridLayout>
+                </FlexboxLayout>
+            </ng-template>
+        </ListView>
     </TabContentItem>
     <TabContentItem>
-        <ScrollView>
-            <Label text="Home Page" class="h2 text-center"></Label>
-        </ScrollView>
+        <ListView [items]="menuItemsSoup" class="list-group">
+            <ng-template let-menuItem="item">
+                <FlexboxLayout flexDirection="column">
+                    <Image src="~/assets/images/{{menuItem.imageName}}"></Image>
+                    <Label [text]="menuItem.name" textAlignment="center" textWrap="true" margin="5" fontSize="20"></Label>
+                    <Label [text]="menuItem.description" textAlignment="center" textWrap="true" margin="5" fontSize="12"></Label>
+                    <GridLayout columns="*,*">
+                        <AbsoluteLayout column=0>
+                            <Image height="30" width="30" src="~/assets/images/rupee.png" left="50"></Image>
+                            <Label [text]="menuItem.price" lineheight="50" alignment="center" fontSize="22" left="75"></Label>
+                        </AbsoluteLayout>
+                        <Button text="Add to Basket" textTransform="capitalize" column="1" marginRight="50" (tap)="onAddToBasket(menuItem.menuItemId)"></Button>
+                    </GridLayout>
+                </FlexboxLayout>
+            </ng-template>
+        </ListView>
     </TabContentItem>
 </Tabs>

@@ -1,1 +1,52 @@
-<p>home</p>
+<section>
+    <div class="row">
+        <img src="../assets/images/BrandCover.png" class="img-fluid" style="width: 100%;">
+    </div>
+</section>
+<br/>
+<section>
+    <div class="container">
+        <h2 class="jumbotron-heading center text-center">About Us</h2>
+        <p class="lead text-center">
+            Solanas Wok & Grill is a Chinese and Thai restaurant in the nest of HongKong Bazaar, Sector 57, Gurugram. 
+            Solanas Wok & Grill offers mouth watering delicious food in most competitive prices. Best Dimsums, Thai Curries and many more...
+        </p>
+    </div>
+</section>
+<section class="text-center">
+    <div class="container">
+        <h2 class="jumbotron-heading center text-center">Featured Menu</h2>
+        <br/>
+        <div class="row">
+            <div class="col-md-6" *ngFor="let menuItem of menuItemsFeatured">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="../../assets/images/{{ menuItem.imageName }}" alt="" class="img-fluid">
+                        <h4>{{ menuItem.name }}</h4>
+                        <p>{{ menuItem.description }}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary">Add To Basket</button>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <button class="btn btn-dark col text-center nav-link" [routerLink]="['/menu/soup']">Full Menu</button>
+            </div>
+        </div>
+    </div>
+</section>
+    

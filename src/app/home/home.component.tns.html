@@ -1,7 +1,7 @@
 <app-action-bar title="Solanas Wok & Grill" [showBackButton]="false"></app-action-bar>
 <ScrollView>
     <StackLayout>
-        <Image src="~/assets/images/Restaurant Branding.png" stretch="aspectFit"></Image>
+        <Image src="~/assets/images/BrandCover.png" stretch="aspectFit"></Image>
         <Label>
             <FormattedString>
                 <Span text="&#xa; &#xa;"></Span>
@@ -31,6 +31,24 @@
             fontWeight="bold"
             fontSize="28"
         ></Label>
+        <Label>
+            <FormattedString>
+                <Span text="&#xa; &#xa;"></Span>
+            </FormattedString>
+        </Label>
+        <FlexboxLayout flexDirection="column" *ngFor="let menuItem of menuItemsFeatured">
+            <Image src="~/assets/images/{{menuItem.imageName}}"></Image>
+            <Label [text]="menuItem.name" textAlignment="center" textWrap="true" margin="5" fontSize="20"></Label>
+            <Label [text]="menuItem.description" textAlignment="center" textWrap="true" margin="5" fontSize="12"></Label>
+            <GridLayout columns="*,*">
+                <AbsoluteLayout column=0>
+                    <Image height="30" width="30" src="~/assets/images/rupee.png" left="50"></Image>
+                    <Label [text]="menuItem.price" lineheight="50" alignment="center" fontSize="22" left="75"></Label>
+                </AbsoluteLayout>
+                <Button text="Add to Basket" textTransform="capitalize" column="1" marginRight="50" (tap)="onAddToBasket(menuItem.menuItemId)"></Button>
+            </GridLayout>
+            <Label class="hr-light"></Label>
+        </FlexboxLayout>
         <Label>
             <FormattedString>
                 <Span text="&#xa; &#xa;"></Span>

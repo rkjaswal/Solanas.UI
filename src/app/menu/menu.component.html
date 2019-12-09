@@ -1,13 +1,43 @@
-<p>menu</p>
-<table>
+<br/>
+<br/>
+<br/>
+
+<ul class="nav nav-tabs">
+    <li routerLinkActive="nav-item active">
+        <a class="nav-link" [routerLink]="['/menu/soup']">Soup</a>
+    </li>
+    <li routerLinkActive="nav-item active">
+        <a class="nav-link" [routerLink]="['/menu/dimsum']">Dimsum</a>
+    </li>
+    <li routerLinkActive="nav-item active">
+        <a class="nav-link" [routerLink]="['/menu/starters']">Starters</a>
+    </li>
+    <li routerLinkActive="nav-item active">
+            <a class="nav-link" [routerLink]="['/menu/grill']">Grills</a>
+    </li>
+    <li routerLinkActive="nav-item active">
+        <a class="nav-link" [routerLink]="['/menu/mains-curries']">Mains & Curries</a>
+    </li>
+    <li routerLinkActive="nav-item active">
+        <a class="nav-link" [routerLink]="['/menu/sides']">Sides</a>
+    </li>
+    <li routerLinkActive="nav-item active">
+        <a class="nav-link" [routerLink]="['/menu/combo-meanl']">Combo Meal</a>
+    </li>
+</ul>
+<!-- <table>
     <thead>
+        <th>Image</th>
         <th>Name</th>
+        <th>Description</th>
         <th>Price</th>
     </thead>
     <tbody>
         <tr *ngFor="let menuItem of menuItems">
+            <img src="./assets/images/{{menuItem.imageName}}">
             <td>{{menuItem.name}}</td>
+            <td>{{menuItem.description}}</td>
             <td>{{menuItem.price}}</td>
         </tr>
     </tbody>
-</table>
+</table> -->
