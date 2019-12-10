@@ -1,20 +1,20 @@
 <div class="pos-f-t">
     <nav class="navbar fixed-top navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleContent" aria-controls="navbarToggleContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleContent" aria-controls="navbarToggleContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand">Solanas Wok & Grill</a>
         <div>
-            <img src="../assets/images/CartIconBlack1.png" width="35" height="35">
-            <label class="text-danger">10</label>
+            <img src="../assets/images/CartIconBlack1.png" width="35" height="35" [routerLink]="['/basket']">
+            <label class="text-danger" *ngIf="menuItemsBasket.length > 0">{{ menuItemsBasket.length }}</label>
         </div>
-        <div class="collapse navbar-collapse" id="navbarToggleContent">
+        <div [collapse]="isCollapsed" class="collapse navbar-collapse" id="navbarToggleContent">
             <br/>
             <div class="bg-dark p-4">
-                <a class="nav-link" href="#">Home</a>
-                <a class="nav-link" href="#">Menu</a>
-                <a class="nav-link" href="#">My Basket</a>
-                <a class="nav-link" href="#">Orders</a>
+                <a class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/home']">Home</a>
+                <a class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/menu']">Menu</a>
+                <a class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/basket']">My Basket</a>
+                <a class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/order']">Orders</a>
             </div>
         </div>
     </nav>
@@ -29,9 +29,6 @@
             <div class="col-md-4">
                 <p class="text-white font-weight-bold">Contact us:</p>            
                 <p class="text-white">LG 20 Hong Kong Bazaar, Section 57, Gurugram, Harayana 122413</p>
-                <p class="text-white">
-                    <i class="fas fa-phone-alt"></i><a href="tel:+919999516139"> +91 99995 16139</a>
-                </p>
                 <p class="text-white">
                     <i class="fas fa-phone-alt"></i><a href="tel:+919999516139"> +91 99995 16139</a>
                 </p>

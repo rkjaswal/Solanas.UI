@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from '../models/menu-item.model';
+import { BasketService } from '../services/basket.service';
 
 @Component({
   selector: 'app-basket',
@@ -8,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class BasketComponent implements OnInit {
 
-  constructor() { }
+  menuItemsBasket: MenuItem[] = [];
+
+  constructor(private basketService: BasketService) { }
 
   ngOnInit() {
+    this.menuItemsBasket = this.basketService.getMenuItemsBasket();
   }
 
 }

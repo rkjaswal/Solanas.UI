@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuService } from '../services/menu.service';
 import { MenuItem } from '../models/menu-item.model';
 import { Subscription } from 'rxjs';
+import { BasketService } from '../services/basket.service';
 
 @Component({
     selector: 'app-menu',
@@ -18,15 +19,18 @@ export class MenuComponent implements OnInit, OnDestroy {
     menuItemsMainsCurries: MenuItem[] = [];
     menuItemsSides: MenuItem[] = [];
     menuItemsComboMeal: MenuItem[] = [];
+    menuItemsBasket: MenuItem[] = [];
 
     private menuItemSubs: Subscription;
+    private menuItemBasketSubs: Subscription;
 
-    constructor(private menuService: MenuService) {
+    constructor(private menuService: MenuService, private basketService: BasketService) {
 
     }
 
     ngOnInit() {
-        this.menuItemSubs = this.menuService.menuChanged.subscribe( mItems => {
+        this.menuItemSubs = this.menuService.menuChanged
+        .subscribe( mItems => {
             this.menuItems = mItems;
             this.menuItemsSoup = mItems.filter(i => i.menuItemTypeId === 1);
             this.menuItemsDimsum = mItems.filter(i => i.menuItemTypeId === 2);
@@ -37,13 +41,19 @@ export class MenuComponent implements OnInit, OnDestroy {
             this.menuItemsComboMeal = mItems.filter(i => i.menuItemTypeId === 7);
         });
         this.menuService.getMenuItems();
+
+        this.menuItemBasketSubs = this.menuItemBasketSubs = this.basketService.basketChanged
+        .subscribe( mItems => {
+            this.menuItemsBasket.push(mItems);
+        });
     }
 
     onAddToBasket(menuItemId) {
-        console.log(menuItemId);
+        this.basketService.addMenuItemToBasket(menuItemId);
     }
-
+  
     ngOnDestroy() {
         this.menuItemSubs.unsubscribe();
+        this.menuItemBasketSubs.unsubscribe();
     }
 }

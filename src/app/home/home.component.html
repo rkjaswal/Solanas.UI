@@ -30,7 +30,7 @@
                             <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-secondary">Add To Basket</button>
+                            <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.menuItemId)">Add To Basket</button>
                         </div>
                     </div>
                     <br/>
@@ -44,7 +44,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <button class="btn btn-dark col text-center nav-link" [routerLink]="['/menu/soup']">Full Menu</button>
+                <button class="btn btn-dark col text-center nav-link" [routerLink]="['/menu']">Full Menu</button>
             </div>
         </div>
     </div>

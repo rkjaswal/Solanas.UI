@@ -20,12 +20,15 @@ export class BasketService implements OnInit, OnDestroy {
     }
 
     addMenuItemToBasket(menuItemId) {
-        this.menuItemsBasket.push(this.menuItems.find(i => i.menuItemId === menuItemId));
         this.basketChanged.next(this.menuItems.find(i => i.menuItemId === menuItemId));
     }
 
+    getMenuItemsBasket() {
+        return this.menuItemsBasket;
+    }
+
     ngOnDestroy() {
-        //this.menuItemSubs.unsubscribe();
+        this.menuItemSubs.unsubscribe();
     }
 }
 

@@ -1,1 +1,28 @@
-<p>basket works!</p>
+<br/>
+<br/>
+<br/>
+<section class="text-center">
+    <div class="container">
+        <br/>
+        <div class="row">
+            <div class="col-md-6" *ngFor="let menuItem of menuItemsBasket">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="../../assets/images/{{ menuItem.imageName }}" alt="" class="img-fluid">
+                        <h4>{{ menuItem.name }}</h4>
+                        <p>{{ menuItem.description }}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.menuItemId)">Add To Basket</button>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
