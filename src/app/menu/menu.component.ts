@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { TabsetComponent } from 'ngx-bootstrap/tabs';
+
 import { MenuService } from '../services/menu.service';
 import { MenuItem } from '../models/menu-item.model';
-import { Subscription } from 'rxjs';
 import { BasketService } from '../services/basket.service';
 
 @Component({
@@ -10,8 +11,11 @@ import { BasketService } from '../services/basket.service';
     styleUrls: ['./menu.component.scss'],
 })
 
-export class MenuComponent implements OnInit, OnDestroy {
-    menuItems: MenuItem[] = [];
+export class MenuComponent implements OnInit {
+
+    @ViewChild('tabset', {static: false}) tabset: TabsetComponent;
+
+    mItems: MenuItem[] = [];
     menuItemsSoup: MenuItem[] = [];
     menuItemsDimsum: MenuItem[] = [];
     menuItemsStarters: MenuItem[] = [];
@@ -19,41 +23,26 @@ export class MenuComponent implements OnInit, OnDestroy {
     menuItemsMainsCurries: MenuItem[] = [];
     menuItemsSides: MenuItem[] = [];
     menuItemsComboMeal: MenuItem[] = [];
-    menuItemsBasket: MenuItem[] = [];
 
-    private menuItemSubs: Subscription;
-    private menuItemBasketSubs: Subscription;
-
-    constructor(private menuService: MenuService, private basketService: BasketService) {
-
-    }
+    constructor(private menuService: MenuService, private basketService: BasketService) { }
 
     ngOnInit() {
-        this.menuItemSubs = this.menuService.menuChanged
-        .subscribe( mItems => {
-            this.menuItems = mItems;
-            this.menuItemsSoup = mItems.filter(i => i.menuItemTypeId === 1);
-            this.menuItemsDimsum = mItems.filter(i => i.menuItemTypeId === 2);
-            this.menuItemsStarters = mItems.filter(i => i.menuItemTypeId === 3);
-            this.menuItemsGrills = mItems.filter(i => i.menuItemTypeId === 4);
-            this.menuItemsMainsCurries = mItems.filter(i => i.menuItemTypeId === 5);
-            this.menuItemsSides = mItems.filter(i => i.menuItemTypeId === 6);
-            this.menuItemsComboMeal = mItems.filter(i => i.menuItemTypeId === 7);
-        });
-        this.menuService.getMenuItems();
 
-        this.menuItemBasketSubs = this.menuItemBasketSubs = this.basketService.basketChanged
-        .subscribe( mItems => {
-            this.menuItemsBasket.push(mItems);
-        });
+        this.mItems = this.menuService.getMenuItems();
+        this.menuItemsSoup = this.mItems.filter(i => i.menuItemTypeId === 1);
+        this.menuItemsDimsum = this.mItems.filter(i => i.menuItemTypeId === 2);
+        this.menuItemsStarters = this.mItems.filter(i => i.menuItemTypeId === 3);
+        this.menuItemsGrills = this.mItems.filter(i => i.menuItemTypeId === 4);
+        this.menuItemsMainsCurries = this.mItems.filter(i => i.menuItemTypeId === 5);
+        this.menuItemsSides = this.mItems.filter(i => i.menuItemTypeId === 6);
+        this.menuItemsComboMeal = this.mItems.filter(i => i.menuItemTypeId === 7);
     }
 
     onAddToBasket(menuItemId) {
         this.basketService.addMenuItemToBasket(menuItemId);
     }
-  
-    ngOnDestroy() {
-        this.menuItemSubs.unsubscribe();
-        this.menuItemBasketSubs.unsubscribe();
+
+    showTab(id) {
+        this.tabset.tabs[id].active = true;
     }
 }

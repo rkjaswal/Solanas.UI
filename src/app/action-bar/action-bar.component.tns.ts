@@ -5,6 +5,7 @@ import { SideDrawerService } from '../services/side-drawer.service';
 import { BasketService } from '../services/basket.service';
 import { MenuItem } from '../models/menu-item.model';
 import { Subscription } from 'rxjs';
+import { MenuService } from '../services/menu.service';
 
 declare var android: any;
 
@@ -18,20 +19,34 @@ export class ActionBarComponent implements OnInit, OnDestroy {
   @Input() title: string;
   @Input() showBackButton = true;
   @Input() showMenu = true;
+  menuItems: MenuItem[] = [];
   menuItemsBasket: MenuItem[] = [];
-  private menuItemBasketSubs: Subscription;
+  private basketChangeSingleSubs: Subscription;
+  private basketChangeMultipleSubs: Subscription;
 
   constructor(
     private page: Page,
     private router: RouterExtensions,
     private sideDrawerService: SideDrawerService,
+    private menuService: MenuService,
     private basketService: BasketService) { }
 
   ngOnInit() {
-      this.menuItemBasketSubs = this.menuItemBasketSubs = this.basketService.basketChanged
-      .subscribe( mItems => {
-          this.menuItemsBasket.push(mItems);
-      });
+    this.menuItems = this.menuService.getMenuItemsFromApi();
+
+    this.basketChangeSingleSubs = this.basketService.basketChangedSingle
+    .subscribe(mItem => {
+      this.menuItemsBasket.push(mItem);
+    });
+
+    this.basketChangeMultipleSubs = this.basketService.basketChangedMultiple
+    .subscribe(mItems => {
+        this.menuItemsBasket.splice(0, this.menuItemsBasket.length);
+
+        for (let i = 0; i < mItems.length; i++) {
+          this.menuItemsBasket.push(mItems[i]);
+        }
+    });
   }
   
   get isAndroidPhone() {
@@ -63,6 +78,7 @@ export class ActionBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.menuItemBasketSubs.unsubscribe();
-  }
+    this.basketChangeSingleSubs.unsubscribe();
+    this.basketChangeMultipleSubs.unsubscribe();
+}
 }

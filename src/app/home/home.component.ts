@@ -10,7 +10,7 @@ import { BasketService } from '../services/basket.service';
   styleUrls: ['./home.component.scss'],
 })
 
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   title = 'Solanas Wok & Grill';
   menuItemsFeatured: MenuItem[] = [];
 
@@ -19,17 +19,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private menuService: MenuService, private basketService: BasketService) { }
 
   ngOnInit() {
-    this.menuItemSubs = this.menuService.menuChanged.subscribe( mItems => {
-        this.menuItemsFeatured = mItems.filter(i => i.isFeatured === true);
-    });
-    this.menuService.getMenuItems();
+    this.menuItemsFeatured = this.menuService.getMenuItems().filter(i => i.isFeatured === true);
   }
 
   onAddToBasket(menuItemId) {
       this.basketService.addMenuItemToBasket(menuItemId);
-  }
-
-  ngOnDestroy() {
-      this.menuItemSubs.unsubscribe();
   }
 }

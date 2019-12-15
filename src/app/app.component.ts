@@ -14,50 +14,35 @@ import { BasketService } from './services/basket.service';
 export class AppComponent implements OnInit, OnDestroy {
 
   menuItems: MenuItem[] = [];
-  menuItemsSoup: MenuItem[] = [];
-  menuItemsDimsum: MenuItem[] = [];
-  menuItemsStarters: MenuItem[] = [];
-  menuItemsGrills: MenuItem[] = [];
-  menuItemsMainsCurries: MenuItem[] = [];
-  menuItemsSides: MenuItem[] = [];
-  menuItemsComboMeal: MenuItem[] = [];
-  menuItemsFeatured: MenuItem[] = [];
   menuItemsBasket: MenuItem[] = [];
 
   isCollapsed = true;
 
-  private menuItemSubs: Subscription;
-  private menuItemBasketSubs: Subscription;
+  private basketChangeSingleSubs: Subscription;
+  private basketChangeMultipleSubs: Subscription;
 
-  constructor(private menuService: MenuService, private basketService: BasketService) {
+  constructor(private menuService: MenuService, private basketService: BasketService) { }
 
-  }
   ngOnInit() {
-    this.menuItemSubs = this.menuService.menuChanged.subscribe( mItems => {
-        this.menuItems = mItems;
-        this.menuItemsSoup = mItems.filter(i => i.menuItemTypeId === 1);
-        this.menuItemsDimsum = mItems.filter(i => i.menuItemTypeId === 2);
-        this.menuItemsStarters = mItems.filter(i => i.menuItemTypeId === 3);
-        this.menuItemsGrills = mItems.filter(i => i.menuItemTypeId === 4);
-        this.menuItemsMainsCurries = mItems.filter(i => i.menuItemTypeId === 5);
-        this.menuItemsSides = mItems.filter(i => i.menuItemTypeId === 6);
-        this.menuItemsComboMeal = mItems.filter(i => i.menuItemTypeId === 7);
-        this.menuItemsFeatured = mItems.filter(i => i.isFeatured === true);
-    });
-    this.menuService.getMenuItems();
+    this.menuItems = this.menuService.getMenuItemsFromApi();
 
-    this.menuItemBasketSubs = this.menuItemBasketSubs = this.basketService.basketChanged
-    .subscribe( mItems => {
-        this.menuItemsBasket.push(mItems);
+    this.basketChangeSingleSubs = this.basketService.basketChangedSingle
+    .subscribe(mItem => {
+      this.menuItemsBasket.push(mItem);
+    });
+
+    this.basketChangeMultipleSubs = this.basketService.basketChangedMultiple
+    .subscribe(mItems => {
+        this.menuItemsBasket.splice(0, this.menuItemsBasket.length);
+
+        for (let i = 0; i < mItems.length; i++) {
+          this.menuItemsBasket.push(mItems[i]);
+        }
     });
 }
 
-  onAddToBasket(menuItemId) {
-    this.basketService.addMenuItemToBasket(menuItemId);
-  }
-
   ngOnDestroy() {
-      this.menuItemSubs.unsubscribe();
-      this.menuItemBasketSubs.unsubscribe();
+      this.basketChangeSingleSubs.unsubscribe();
+      this.basketChangeMultipleSubs.unsubscribe();
   }
 }

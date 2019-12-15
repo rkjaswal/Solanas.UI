@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuItem } from '../models/menu-item.model';
 import { BasketService } from '../services/basket.service';
 
@@ -10,7 +10,8 @@ import { BasketService } from '../services/basket.service';
 
 export class BasketComponent implements OnInit {
 
-  menuItemsBasket: MenuItem[] = [];
+  menuItemsBasket: MenuItem[];
+  totalPrice: number;
 
   constructor(private basketService: BasketService) { }
 
@@ -18,4 +19,11 @@ export class BasketComponent implements OnInit {
     this.menuItemsBasket = this.basketService.getMenuItemsBasket();
   }
 
+  removeMenuItemsFromBasket(menuItemId) {
+    this.basketService.removeMenuItemToBasket(menuItemId);
+  }
+
+  getTotalPrice() {
+    return this.basketService.getTotalPrice();
+  }
 }
