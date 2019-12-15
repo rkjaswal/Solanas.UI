@@ -28,7 +28,7 @@
                 <br/>
                 <div class="row">
                     <div class="col-md-12">
-                        <button (click)="showTab(6)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Combo Meal</button>
+                        <button (click)="showTab(6)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Meals</button>
                         <button (click)="showTab(1)" class="btn btn-link float-right">Dimsum <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
@@ -184,13 +184,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button (click)="showTab(4)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Mains & Curries</button>
-                        <button (click)="showTab(6)" class="btn btn-link float-right">Combo Meal <i class="fas fa-angle-double-right"></i></button>
+                        <button (click)="showTab(6)" class="btn btn-link float-right">Meals <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
             </tab>
             <!--Sides Tab End-->
             <!--ComboMeal Tab Start-->
-            <tab heading="Combo Meal">
+            <tab heading="Meals">
                 <div class="row">
                     <div class="col-md-6" *ngFor="let menuItem of menuItemsComboMeal">
                         <div class="card">

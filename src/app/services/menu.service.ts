@@ -28,7 +28,7 @@ export class MenuService {
                 });
             }
         }, error => {
-            alert('Sorry, we are unable to process your request, please try after some time.');
+            alert('Sorry, our website is undergoing maintenance, you will not be able to place online orders, please try after some time.');
         });
 
         return this.menuItems;
