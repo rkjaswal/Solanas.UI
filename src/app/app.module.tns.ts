@@ -12,6 +12,9 @@ import { MenuComponent } from '@src/app/menu/menu.component';
 import { BasketComponent } from '@src/app/basket/basket.component';
 import { OrderComponent } from '@src/app/order/order.component';
 import { MenuItemComponent } from '@src/app/menu-item/menu-item.component';
+import { LoginComponent } from '@src/app/login/login.component';
+import { UserInfoComponent } from '@src/app/user-info/user-info.component';
+import { OrderReviewComponent } from '@src/app/order-review/order-review.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -28,6 +31,9 @@ import { MenuItemComponent } from '@src/app/menu-item/menu-item.component';
     BasketComponent,
     OrderComponent,
     MenuItemComponent,
+    LoginComponent,
+    UserInfoComponent,
+    OrderReviewComponent,
   ],
   imports: [
     NativeScriptModule,

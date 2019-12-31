@@ -1,0 +1,76 @@
+<br/>
+<br/>
+<br/>
+<section>
+    <div class="container text-center">
+        <div *ngIf="menuItemsBasket.length === 0" class="text-center">
+            <h5>Your basket is empty!</h5>
+            <br/>
+            <div class="col">
+                <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                <button class="btn btn-secondary" [routerLink]="['/menu']">Menu</button>
+            </div>
+        </div>
+        <div *ngIf="menuItemsBasket.length > 0" class="row">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning btn-lg">Buy Now</button>
+            </div>
+        </div>
+        <br/>
+        <form *ngIf="menuItemsBasket.length > 0">
+            <h5>Order Summary</h5>
+            <div class="row">
+                <div class="col">
+                    <p>Subtotal ({{ menuItemsBasket.length }} items)</p>
+                </div>
+                <div class="col">
+                    <p><i class="fas fa-rupee-sign"></i>{{ getTotalPrice() }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Online Discount</p>
+                </div>
+                <div class="col">
+                    <p>- <i class="fas fa-rupee-sign"></i>{{ getDiscount() }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Order Total</p>
+                </div>
+                <div class="col">
+                    <span class="text-danger"><i class="fas fa-rupee-sign"></i>{{ getDiscountedPrice() }}</span>
+                </div>
+            </div>
+            <h5>Delivery Address</h5>
+            <div class="row">
+                <div class="col">
+                    <span class="font-weight-bold">{{ user.name }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="font-weight-bold">{{ user.phone }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>{{ user.addressLine1 }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>{{ user.addressLine2 }}</span>
+                </div>
+            </div>
+            <br/>
+            <h5>Payment Information</h5>
+            <div class="row">
+                <div class="col">
+                    <span>Cash on delivery</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

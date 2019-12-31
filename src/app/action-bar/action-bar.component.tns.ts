@@ -25,7 +25,6 @@ export class ActionBarComponent implements OnInit, OnDestroy {
   private basketChangeMultipleSubs: Subscription;
 
   constructor(
-    private page: Page,
     private router: RouterExtensions,
     private sideDrawerService: SideDrawerService,
     private menuService: MenuService,
@@ -48,7 +47,7 @@ export class ActionBarComponent implements OnInit, OnDestroy {
         }
     });
   }
-  
+
   get isAndroidPhone() {
     return isAndroid;
   }
@@ -56,7 +55,7 @@ export class ActionBarComponent implements OnInit, OnDestroy {
   onHome() {
     this.router.navigate(['/home']);
   }
-  
+
   onFullMenu() {
     this.router.navigate(['/menu']);
   }
@@ -64,7 +63,7 @@ export class ActionBarComponent implements OnInit, OnDestroy {
   onBasket() {
     this.router.navigate(['/basket']);
   }
-  
+
   get canGoBack() {
     return this.router.canGoBack() && this.showBackButton;
   }
@@ -80,5 +79,5 @@ export class ActionBarComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.basketChangeSingleSubs.unsubscribe();
     this.basketChangeMultipleSubs.unsubscribe();
-}
+  }
 }

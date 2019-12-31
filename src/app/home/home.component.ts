@@ -14,8 +14,6 @@ export class HomeComponent implements OnInit {
   title = 'Solanas Wok & Grill';
   menuItemsFeatured: MenuItem[] = [];
 
-  private menuItemSubs: Subscription;
-
   constructor(private menuService: MenuService, private basketService: BasketService) { }
 
   ngOnInit() {

@@ -12,13 +12,24 @@
                 <button class="btn btn-secondary" [routerLink]="['/menu']">Menu</button>
             </div>
         </div>
-        <div *ngIf="menuItemsBasket.length > 0" class="row ml-4">
+        <div *ngIf="menuItemsBasket.length > 0" class="col-lg-9">
             <div>
-                <h5>Subtotal ({{ menuItemsBasket.length }} items): <i class="fas fa-rupee-sign"></i>{{ getTotalPrice() }}</h5>
+                <h6>
+                    Subtotal ({{ menuItemsBasket.length }} items): 
+                    <s>
+                        <i class="fas fa-rupee-sign"></i>{{ getTotalPrice() }}
+                    </s>
+                    <span class="text-danger">
+                        <i class="fas fa-rupee-sign"></i>{{ getDiscountedPrice() }}
+                    </span>
+                </h6>
             </div>
         </div>
-        <div *ngIf="menuItemsBasket.length > 0" class="row ml-4">
-            <button type="button" class="btn btn-warning">Buy Now</button>
+        <div *ngIf="menuItemsBasket.length > 0 && !isLoggedIn()" class="col-lg-6">
+            <button type="button" class="btn btn-warning" [routerLink]="['/login']">Proceed To Checkout</button>
+        </div>
+        <div *ngIf="menuItemsBasket.length > 0 && isLoggedIn()" class="col-lg-6">
+            <button type="button" class="btn btn-warning" [routerLink]="['/userinfo']">Proceed To Checkout</button>
         </div>
         <br/>
         <div class="row">
@@ -49,7 +60,7 @@
                             </select>    
                         </div> -->
                         <div class="col">
-                            <button type="button" class="btn btn-secondary btn-sm ml-4" (click)="removeMenuItemsFromBasket(menuItem.menuItemId)" >Remove From Basket</button>
+                            <button type="button" class="btn btn-secondary btn-sm ml-4" (click)="removeMenuItemsFromBasket(menuItem.menuItemId)">Remove From Basket</button>
                         </div>
                     </div>
                     <br/>

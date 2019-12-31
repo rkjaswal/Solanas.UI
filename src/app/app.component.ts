@@ -24,6 +24,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private menuService: MenuService, private basketService: BasketService) { }
 
   ngOnInit() {
+    console.log('Getting MenuItems from Api');
+
     this.menuItems = this.menuService.getMenuItemsFromApi();
 
     this.basketChangeSingleSubs = this.basketService.basketChangedSingle

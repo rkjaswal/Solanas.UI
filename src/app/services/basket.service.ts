@@ -1,7 +1,8 @@
 import { Injectable, OnInit, OnDestroy } from '@angular/core';
-import { MenuItem } from '../models/menu-item.model';
 import { Subject, Subscription } from 'rxjs';
 import { MenuService } from './menu.service';
+import { MenuItem } from '../models/menu-item.model';
+import { Order } from '../models/order.model';
 
 @Injectable({providedIn: 'root'})
 
@@ -11,7 +12,7 @@ export class BasketService implements OnInit, OnDestroy {
     menuItems: MenuItem[] = [];
     menuItemsBasket: MenuItem[] = [];
     private menuItemSubs: Subscription;
-    private totalPrice: number;
+    order: Order = new Order;
 
     constructor(private menuService: MenuService) {}
 
@@ -49,13 +50,23 @@ export class BasketService implements OnInit, OnDestroy {
     }
 
     getTotalPrice() {
-        this.totalPrice = 0;
+        this.order.totalPrice = 0;
 
         for (let i = 0; i < this.menuItemsBasket.length; i++) {
-            this.totalPrice = this.totalPrice + this.menuItemsBasket[i].price;
-          }
+            this.order.totalPrice = this.order.totalPrice + this.menuItemsBasket[i].price;
+        }
 
-        return this.totalPrice;
+        this.order.discountedPrice = this.order.totalPrice * 0.85;
+
+        return this.order.totalPrice;
+    }
+
+    getDiscountedPrice() {
+        return this.order.discountedPrice;
+    }
+
+    getDiscount() {
+        return this.order.totalPrice - this.order.discountedPrice;
     }
 
     ngOnDestroy() {

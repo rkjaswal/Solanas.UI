@@ -15,8 +15,7 @@ export class MenuService {
         this.httpClient.get<MenuItem[]>('https://solanasapi.appspot.com/api/menu/menuitems')
         .subscribe(resData => {
             this.menuChanged.next(resData);
-            for (let i = 0; i < resData.length; i++)
-            {
+            for (let i = 0; i < resData.length; i++) {
                 this.menuItems.push({
                     menuItemId: resData[i].menuItemId,
                     menuItemTypeId: resData[i].menuItemTypeId,
@@ -28,7 +27,7 @@ export class MenuService {
                 });
             }
         }, error => {
-            alert('Sorry, our website is undergoing maintenance, you will not be able to place online orders, please try after some time.');
+            alert('Sorry, it seems we encountered an error, you will not be able to place online orders, please try after some time.');
         });
 
         return this.menuItems;

@@ -26,10 +26,16 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
+                <div *ngIf="menuItemsSoup.length > 0" class="row text-center">
                     <div class="col-md-12">
                         <button (click)="showTab(6)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Meals</button>
                         <button (click)="showTab(1)" class="btn btn-link float-right">Dimsum <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsSoup.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
                     </div>
                 </div>
             </tab>
@@ -57,10 +63,16 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
+                <div *ngIf="menuItemsDimsum.length > 0" class="row text-center">
                     <div class="col-md-12">
                         <button (click)="showTab(0)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Soup</button>
                         <button (click)="showTab(2)" class="btn btn-link float-right">Starters <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsDimsum.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
                     </div>
                 </div>
             </tab>
@@ -88,10 +100,16 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
+                <div *ngIf="menuItemsStarters.length > 0" class="row text-center">
                     <div class="col-md-12">
                         <button (click)="showTab(1)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Dimsum</button>
                         <button (click)="showTab(3)" class="btn btn-link float-right">Grills <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsStarters.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
                     </div>
                 </div>
             </tab>
@@ -119,10 +137,16 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
+                <div *ngIf="menuItemsGrills.length > 0" class="row text-center">
                     <div class="col-md-12">
                         <button (click)="showTab(2)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Starters</button>
                         <button (click)="showTab(4)" class="btn btn-link float-right">Mains & Curries <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsGrills.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
                     </div>
                 </div>
             </tab>
@@ -150,10 +174,16 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
+                <div *ngIf="menuItemsMainsCurries.length > 0" class="row text-center">
                     <div class="col-md-12">
                         <button (click)="showTab(3)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Grills</button>
                         <button (click)="showTab(5)" class="btn btn-link float-right">Sides <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsMainsCurries.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
                     </div>
                 </div>
             </tab>
@@ -181,10 +211,16 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
+                <div *ngIf="menuItemsSides.length > 0" class="row text-center">
                     <div class="col-md-12">
                         <button (click)="showTab(4)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Mains & Curries</button>
                         <button (click)="showTab(6)" class="btn btn-link float-right">Meals <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsSides.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
                     </div>
                 </div>
             </tab>
@@ -212,10 +248,16 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
+                <div *ngIf="menuItemsComboMeal.length > 0" class="row text-center">
                     <div class="col-md-12">
                         <button (click)="showTab(5)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Sides</button>
                         <button (click)="showTab(0)" class="btn btn-link float-right">Soup <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsComboMeal.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
                     </div>
                 </div>
             </tab>
