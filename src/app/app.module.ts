@@ -15,7 +15,6 @@ import { MenuComponent } from '@src/app/menu/menu.component';
 import { ActionBarComponent } from '@src/app/action-bar/action-bar.component';
 import { BasketComponent } from '@src/app/basket/basket.component';
 import { OrderComponent } from '@src/app/order/order.component';
-import { MenuItemComponent } from '@src/app/menu-item/menu-item.component';
 import { LoginComponent } from '@src/app/login/login.component';
 import { UserInfoComponent } from '@src/app/user-info/user-info.component';
 import { OrderReviewComponent } from '@src/app/order-review/order-review.component';
@@ -28,7 +27,6 @@ import { OrderReviewComponent } from '@src/app/order-review/order-review.compone
     ActionBarComponent,
     BasketComponent,
     OrderComponent,
-    MenuItemComponent,
     LoginComponent,
     UserInfoComponent,
     OrderReviewComponent,
