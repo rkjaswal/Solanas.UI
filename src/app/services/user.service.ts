@@ -9,7 +9,8 @@ import { User } from '../models/user.model';
 export class UserService implements OnInit, OnDestroy {
 
     user: User = new User();
-    isLogIn = false;
+    loginStatusChanged = new Subject<boolean>();
+    loggedIn = false;
     private socialLoginSubs: Subscription;
 
     constructor(private socialLoginService: SocialLoginService, private router: Router) {}
@@ -21,7 +22,6 @@ export class UserService implements OnInit, OnDestroy {
         this.socialLoginSubs = this.socialLoginService.login(Provider.GOOGLE)
             .subscribe(userData => {
                 console.log(userData);
-                this.isLogIn = true;
                 this.user = new User();
                 this.user.idToken = userData.idToken;
                 this.user.name = userData.name;
@@ -29,7 +29,13 @@ export class UserService implements OnInit, OnDestroy {
                 this.user.phone = '';
                 this.user.addressLine1 = '';
                 this.user.addressLine2 = '';
-        });
+                this.user.addressLine3 = '';
+
+                if (userData) {
+                    this.loginStatusChanged.next(true);
+                    this.loggedIn = true;
+                }
+            });
     }
 
     loginWithFacebook(): void {
@@ -39,6 +45,14 @@ export class UserService implements OnInit, OnDestroy {
                 this.user.idToken = userData.idToken;
                 this.user.name = userData.name;
                 this.user.email = userData.email;
+                this.user.phone = '';
+                this.user.addressLine1 = '';
+                this.user.addressLine2 = '';
+
+                if (userData) {
+                    this.loginStatusChanged.next(true);
+                    this.loggedIn = true;
+                }
             });
     }
 
@@ -49,18 +63,23 @@ export class UserService implements OnInit, OnDestroy {
         });
     }
 
-    updateUser(phone, addressLine1, addressLine2) {
+    updateUser(phone, addressLine1, addressLine2, addressLine3) {
         this.user.phone = phone;
         this.user.addressLine1 = addressLine1;
         this.user.addressLine2 = addressLine2;
+        this.user.addressLine3 = addressLine3;
     }
 
     isLoggedIn(): boolean {
-        return this.isLogIn;
+        return this.loggedIn;
     }
 
     getUser() {
         return this.user;
+    }
+
+    getEmail() {
+        return this.user.email;
     }
 
     ngOnDestroy() {

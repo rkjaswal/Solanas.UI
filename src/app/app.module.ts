@@ -49,7 +49,7 @@ import { OrderReviewComponent } from '@src/app/order-review/order-review.compone
       },
       facebook: {
         initOptions: {
-            appId: '1414203032071364'
+            appId: '505026036788455'
         }
       }
     })

@@ -25,10 +25,7 @@
                 </h6>
             </div>
         </div>
-        <div *ngIf="menuItemsBasket.length > 0 && !isLoggedIn()" class="col-lg-6">
-            <button type="button" class="btn btn-warning" [routerLink]="['/login']">Proceed To Checkout</button>
-        </div>
-        <div *ngIf="menuItemsBasket.length > 0 && isLoggedIn()" class="col-lg-6">
+        <div *ngIf="menuItemsBasket.length > 0" class="col-lg-6">
             <button type="button" class="btn btn-warning" [routerLink]="['/userinfo']">Proceed To Checkout</button>
         </div>
         <br/>

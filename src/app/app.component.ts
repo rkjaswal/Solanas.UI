@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { MenuService } from './services/menu.service';
 import { MenuItem } from './models/menu-item.model';
 import { BasketService } from './services/basket.service';
+import { UserService } from './services/user.service';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +23,9 @@ export class AppComponent implements OnInit, OnDestroy {
   private basketChangeSingleSubs: Subscription;
   private basketChangeMultipleSubs: Subscription;
 
-  constructor(private menuService: MenuService, private basketService: BasketService) { }
+  constructor(private menuService: MenuService, private basketService: BasketService, private userService: UserService) { }
 
   ngOnInit() {
-    console.log('Getting MenuItems from Api');
-
     this.menuItems = this.menuService.getMenuItemsFromApi();
 
     this.basketChangeSingleSubs = this.basketService.basketChangedSingle
@@ -41,7 +41,15 @@ export class AppComponent implements OnInit, OnDestroy {
           this.menuItemsBasket.push(mItems[i]);
         }
     });
-}
+  }
+
+  isLoggedIn() {
+    return this.userService.isLoggedIn();
+  }
+
+  getEmail() {
+    return this.userService.getEmail();
+  }
 
   ngOnDestroy() {
       this.basketChangeSingleSubs.unsubscribe();
