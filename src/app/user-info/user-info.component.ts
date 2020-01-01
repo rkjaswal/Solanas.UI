@@ -26,8 +26,8 @@ export class UserInfoComponent implements OnInit {
     this.user = this.userService.getUser();
 
     this.userInfoForm = this.formBuilder.group({
-      name: [this.user.name],
-      email: [this.user.email],
+      name: [{ value: this.user.name, disabled: true }],
+      email: [{ value: this.user.email, disabled: true }],
       phone: [this.user.phone, [Validators.required, Validators.pattern(/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/)]],
       addressLine1: [this.user.addressLine1, Validators.required],
       addressLine2: [this.user.addressLine2, Validators.required],

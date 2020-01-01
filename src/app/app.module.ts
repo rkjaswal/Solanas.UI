@@ -6,7 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { NgxSocialLoginModule } from 'ng8-social-login';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
 import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
@@ -18,6 +19,21 @@ import { OrderComponent } from '@src/app/order/order.component';
 import { LoginComponent } from '@src/app/login/login.component';
 import { UserInfoComponent } from '@src/app/user-info/user-info.component';
 import { OrderReviewComponent } from '@src/app/order-review/order-review.component';
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('40007158707-0dgtlflut8jtus4eis2u3jmtt39fkhks.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("Facebook-App-Id")
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -38,21 +54,17 @@ import { OrderReviewComponent } from '@src/app/order-review/order-review.compone
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    SocialLoginModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    NgxSocialLoginModule.init({
-      google: {
-        client_id: '40007158707-0dgtlflut8jtus4eis2u3jmtt39fkhks.apps.googleusercontent.com'
-      },
-      facebook: {
-        initOptions: {
-            appId: '505026036788455'
-        }
-      }
-    })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
