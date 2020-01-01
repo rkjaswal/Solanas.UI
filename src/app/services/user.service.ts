@@ -24,16 +24,16 @@ export class UserService implements OnInit, OnDestroy {
             .subscribe(userData => {
                 this.zone.run(() => {
                     console.log(userData);
-                    this.user = new User();
-                    this.user.idToken = userData.idToken;
-                    this.user.name = userData.name;
-                    this.user.email = userData.email;
-                    this.user.phone = '';
-                    this.user.addressLine1 = '';
-                    this.user.addressLine2 = '';
-                    this.user.addressLine3 = '';
 
                     if (userData) {
+                        this.user.idToken = userData.idToken;
+                        this.user.name = userData.name;
+                        this.user.email = userData.email;
+                        this.user.phone = '';
+                        this.user.addressLine1 = '';
+                        this.user.addressLine2 = '';
+                        this.user.addressLine3 = '';
+
                         this.loginStatusChanged.next(true);
                         this.loggedIn = true;
                     }
