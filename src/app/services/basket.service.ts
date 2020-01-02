@@ -38,7 +38,7 @@ export class BasketService implements OnInit, OnDestroy {
             description: mItem.description,
             price: mItem.price,
             imageName: mItem.imageName,
-            isFeatured: mItem.isFeatured,
+            featured: mItem.featured,
         });
     }
 

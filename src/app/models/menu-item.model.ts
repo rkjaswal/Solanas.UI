@@ -5,5 +5,5 @@ export class MenuItem {
     description: string;
     price: number;
     imageName: string;
-    isFeatured: boolean;
+    featured: boolean;
 }

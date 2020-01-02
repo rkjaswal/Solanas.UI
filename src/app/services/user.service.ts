@@ -61,8 +61,20 @@ export class UserService implements OnInit, OnDestroy {
         return this.loggedIn;
     }
 
+    isAdmin(): boolean {
+        if (this.loggedIn) {
+            if (this.user.email === 'rkjaswal@gmail.com') {
+                return true;
+            }
+        }
+    }
+
     getUser() {
         return this.user;
+    }
+
+    saveUser() {
+        
     }
 
     getEmail() {

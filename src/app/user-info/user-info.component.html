@@ -46,9 +46,9 @@
             <div class="form-group row">
               <label for="addressLine3" class="col-sm-2 col-form-label font-weight-bold">Address Line 3</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': formSubmitted && f.addressLine3.invalid }" id="addressLine3" formControlName="addressLine3" placeholder="Locality">
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': formSubmitted && f.addressLine3.invalid }" id="addressLine3" formControlName="addressLine3" placeholder="Locality / Nearest Landmark">
                 <div *ngIf="formSubmitted && f.addressLine3.invalid" class="invalid-feedback">
-                    Please enter your locality
+                    Please enter your locality or nearest landmark
                 </div>
               </div>
             </div>

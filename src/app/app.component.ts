@@ -47,6 +47,10 @@ export class AppComponent implements OnInit, OnDestroy {
     return this.userService.isLoggedIn();
   }
 
+  isAdmin() {
+    return this.userService.isAdmin();
+  }
+
   getEmail() {
     return this.userService.getEmail();
   }

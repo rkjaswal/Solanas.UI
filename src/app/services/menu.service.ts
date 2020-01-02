@@ -1,18 +1,22 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MenuItem } from '../models/menu-item.model';
-import { Subject } from 'rxjs';
+import { Subject, Subscribable, Subscription } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 
-export class MenuService {
+export class MenuService implements OnInit, OnDestroy {
     menuChanged = new Subject<MenuItem[]>();
     menuItems: MenuItem[] = [];
+    private menuChangedSubs: Subscription;
 
     constructor(private httpClient: HttpClient) {}
 
+    ngOnInit() {
+    }
+
     getMenuItemsFromApi(): MenuItem[] {
-        this.httpClient.get<MenuItem[]>('https://solanasapi.appspot.com/api/menu/menuitems')
+        this.menuChangedSubs = this.httpClient.get<MenuItem[]>('https://solanasapi.appspot.com/api/menu/menuitems')
         .subscribe(resData => {
             this.menuChanged.next(resData);
             for (let i = 0; i < resData.length; i++) {
@@ -23,7 +27,7 @@ export class MenuService {
                     description: resData[i].description,
                     price: resData[i].price,
                     imageName: resData[i].imageName,
-                    isFeatured: resData[i].isFeatured,
+                    featured: resData[i].featured,
                 });
             }
         }, error => {
@@ -35,5 +39,9 @@ export class MenuService {
 
     getMenuItems() {
         return this.menuItems;
+    }
+
+    ngOnDestroy() {
+        this.menuChangedSubs.unsubscribe();
     }
 }

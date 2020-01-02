@@ -10,17 +10,27 @@ import { BasketService } from '../services/basket.service';
   styleUrls: ['./home.component.scss'],
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   title = 'Solanas Wok & Grill';
   menuItemsFeatured: MenuItem[] = [];
+  private menuChangedSubs: Subscription;
 
   constructor(private menuService: MenuService, private basketService: BasketService) { }
 
   ngOnInit() {
-    this.menuItemsFeatured = this.menuService.getMenuItems().filter(i => i.isFeatured === true);
+    this.menuChangedSubs = this.menuService.menuChanged
+      .subscribe(menu => {
+        this.menuItemsFeatured = this.menuService.getMenuItems().filter(i => i.featured === true);
+      });
+
+      this.menuItemsFeatured = this.menuService.getMenuItems().filter(i => i.featured === true);
   }
 
   onAddToBasket(menuItemId) {
       this.basketService.addMenuItemToBasket(menuItemId);
+  }
+
+  ngOnDestroy() {
+    this.menuChangedSubs.unsubscribe();
   }
 }

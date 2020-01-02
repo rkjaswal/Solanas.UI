@@ -14,7 +14,8 @@
                 <a class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/home']">Home</a>
                 <a class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/menu']">Menu</a>
                 <a class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/basket']">My Basket</a>
-                <a *ngIf="isLoggedIn() && getEmail() === 'rkjaswal@gmail.com'" class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/order']">Orders</a>
+                <a *ngIf="isLoggedIn()" class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/order']">My Orders</a>
+                <a *ngIf="isAdmin()" class="nav-link" routerLinkActive="nav-item active" (click)="isCollapsed = !isCollapsed" [routerLink]="['/order']">Orders</a>
             </div>
         </div>
     </nav>
