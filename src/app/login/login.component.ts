@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginWithFacebook(): void {
     this.loginStatusChangedSubs = this.userService.loginStatusChanged
       .subscribe(loggedIn => {
-        this.router.navigate(['/userinfo']);
+        this.router.navigate(['/basket']);
       });
 
     this.userService.loginWithFacebook();

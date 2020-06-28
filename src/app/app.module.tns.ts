@@ -14,6 +14,7 @@ import { OrderComponent } from '@src/app/order/order.component';
 import { LoginComponent } from '@src/app/login/login.component';
 import { UserInfoComponent } from '@src/app/user-info/user-info.component';
 import { OrderReviewComponent } from '@src/app/order-review/order-review.component';
+import { ComboMealComponent } from '@src/app/menu/combo-meal/combo-meal.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -32,6 +33,7 @@ import { OrderReviewComponent } from '@src/app/order-review/order-review.compone
     LoginComponent,
     UserInfoComponent,
     OrderReviewComponent,
+    ComboMealComponent,
   ],
   imports: [
     NativeScriptModule,

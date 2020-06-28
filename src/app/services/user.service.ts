@@ -44,6 +44,27 @@ export class UserService implements OnInit, OnDestroy {
     }
 
     loginWithFacebook(): void {
+        this.socialLoginSubs = this.authService.authState
+            .subscribe(userData => {
+                this.zone.run(() => {
+                    console.log(userData);
+
+                    if (userData) {
+                        this.user.idToken = userData.idToken;
+                        this.user.name = userData.name;
+                        this.user.email = userData.email;
+                        this.user.phone = '';
+                        this.user.addressLine1 = '';
+                        this.user.addressLine2 = '';
+                        this.user.addressLine3 = '';
+
+                        this.loginStatusChanged.next(true);
+                        this.loggedIn = true;
+                    }
+                });
+            });
+
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     }
 
     logout(): void {
@@ -74,7 +95,6 @@ export class UserService implements OnInit, OnDestroy {
     }
 
     saveUser() {
-        
     }
 
     getEmail() {

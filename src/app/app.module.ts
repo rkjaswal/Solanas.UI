@@ -19,6 +19,7 @@ import { OrderComponent } from '@src/app/order/order.component';
 import { LoginComponent } from '@src/app/login/login.component';
 import { UserInfoComponent } from '@src/app/user-info/user-info.component';
 import { OrderReviewComponent } from '@src/app/order-review/order-review.component';
+import { ComboMealComponent } from '@src/app/menu/combo-meal/combo-meal.component';
 
 let config = new AuthServiceConfig([
   {
@@ -27,7 +28,7 @@ let config = new AuthServiceConfig([
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("Facebook-App-Id")
+    provider: new FacebookLoginProvider("507746310091526")
   }
 ]);
 
@@ -46,6 +47,7 @@ export function provideConfig() {
     LoginComponent,
     UserInfoComponent,
     OrderReviewComponent,
+    ComboMealComponent,
   ],
   imports: [
     BrowserModule,

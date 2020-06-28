@@ -4,6 +4,7 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { MenuService } from '../services/menu.service';
 import { MenuItem } from '../models/menu-item.model';
 import { BasketService } from '../services/basket.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-menu',
@@ -24,7 +25,7 @@ export class MenuComponent implements OnInit {
     menuItemsSides: MenuItem[] = [];
     menuItemsComboMeal: MenuItem[] = [];
 
-    constructor(private menuService: MenuService, private basketService: BasketService) { }
+    constructor(private menuService: MenuService, private basketService: BasketService, private router: Router) { }
 
     ngOnInit() {
 
@@ -39,7 +40,12 @@ export class MenuComponent implements OnInit {
     }
 
     onAddToBasket(menuItemId) {
-        this.basketService.addMenuItemToBasket(menuItemId);
+        console.log(menuItemId);
+        if (menuItemId === 85) {
+            this.router.navigate(['/menu/combomeal']);
+        } else {
+            this.basketService.addMenuItemToBasket(menuItemId);
+        }
     }
 
     showTab(id) {
