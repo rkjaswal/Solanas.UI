@@ -2,7 +2,7 @@
 <br/>
 <br/>
 <section>
-    <div>
+    <div class="container">
         <img src="../assets/images/BrandCover.png" class="img-fluid" style="width: 100%;">
     </div>
 </section>
@@ -25,15 +25,15 @@
                 <div class="card">
                     <div class="card-body">
                         <img src="../../assets/images/{{ menuItem.imageName }}" alt="" class="img-fluid">
-                        <h4>{{ menuItem.name }}</h4>
-                        <p>{{ menuItem.description }}</p>
+                        <h4>{{ menuItem.itemName }}</h4>
+                        <p>{{ menuItem.itemDescription }}</p>
                     </div>
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.menuItemId)">Add To Basket</button>
+                            <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.itemId)">Add To Basket</button>
                         </div>
                     </div>
                     <br/>

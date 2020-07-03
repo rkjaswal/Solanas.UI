@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://api.petpooja.com/V1/pendingorders/mapped_restaurant_menus/",
+        "secure": true,
+        "logLevel": "debug"
+    }
+}

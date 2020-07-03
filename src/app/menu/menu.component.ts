@@ -30,13 +30,13 @@ export class MenuComponent implements OnInit {
     ngOnInit() {
 
         this.mItems = this.menuService.getMenuItems();
-        this.menuItemsSoup = this.mItems.filter(i => i.menuItemTypeId === 1);
-        this.menuItemsDimsum = this.mItems.filter(i => i.menuItemTypeId === 2);
-        this.menuItemsStarters = this.mItems.filter(i => i.menuItemTypeId === 3);
-        this.menuItemsGrills = this.mItems.filter(i => i.menuItemTypeId === 4);
-        this.menuItemsMainsCurries = this.mItems.filter(i => i.menuItemTypeId === 5);
-        this.menuItemsSides = this.mItems.filter(i => i.menuItemTypeId === 6);
-        this.menuItemsComboMeal = this.mItems.filter(i => i.menuItemTypeId === 7);
+        this.menuItemsSoup = this.mItems.filter(i => i.item_CategoryId === 281084 || i.item_CategoryId === 281085);
+        this.menuItemsDimsum = this.mItems.filter(i => i.item_CategoryId === 281086 || i.item_CategoryId === 281087);
+        this.menuItemsStarters = this.mItems.filter(i => i.item_CategoryId === 281088 || i.item_CategoryId === 281089);
+        this.menuItemsGrills = this.mItems.filter(i => i.item_CategoryId === 281090 || i.item_CategoryId === 281091);
+        this.menuItemsMainsCurries = this.mItems.filter(i => i.item_CategoryId === 281093 || i.item_CategoryId === 281094);
+        this.menuItemsSides = this.mItems.filter(i => i.item_CategoryId === 281096 || i.item_CategoryId === 281097);
+        this.menuItemsComboMeal = this.mItems.filter(i => i.item_CategoryId === 7);
     }
 
     onAddToBasket(menuItemId) {

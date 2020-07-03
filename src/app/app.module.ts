@@ -21,6 +21,10 @@ import { UserInfoComponent } from '@src/app/user-info/user-info.component';
 import { OrderReviewComponent } from '@src/app/order-review/order-review.component';
 import { ComboMealComponent } from '@src/app/menu/combo-meal/combo-meal.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -57,6 +61,8 @@ export function provideConfig() {
     HttpClientModule,
     AppRoutingModule,
     SocialLoginModule,
+    //AngularFireModule.initializeApp(environment.firebaseConfig),
+    //AngularFireDatabaseModule,
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),

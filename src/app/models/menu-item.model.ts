@@ -1,8 +1,8 @@
 export class MenuItem {
-    menuItemId: number;
-    menuItemTypeId: number;
-    name: string;
-    description: string;
+    itemId: number;
+    item_CategoryId: number;
+    itemName: string;
+    itemDescription: string;
     price: number;
     imageName: string;
     featured: boolean;

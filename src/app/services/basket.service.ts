@@ -29,13 +29,13 @@ export class BasketService implements OnInit, OnDestroy {
 
     addMenuItemToBasket(menuItemId) {
         this.menuItems = this.menuService.getMenuItems();
-        const mItem = this.menuItems.find(i => i.menuItemId === menuItemId);
+        const mItem = this.menuItems.find(i => i.itemId === menuItemId);
         this.basketChangedSingle.next(mItem);
         this.menuItemsBasket.push({
-            menuItemId: mItem.menuItemId,
-            menuItemTypeId: mItem.menuItemTypeId,
-            name: mItem.name,
-            description: mItem.description,
+            itemId: mItem.itemId,
+            item_CategoryId: mItem.item_CategoryId,
+            itemName: mItem.itemName,
+            itemDescription: mItem.itemDescription,
             price: mItem.price,
             imageName: mItem.imageName,
             featured: mItem.featured,
@@ -43,7 +43,7 @@ export class BasketService implements OnInit, OnDestroy {
     }
 
     removeMenuItemToBasket(menuItemId) {
-        const mItemIndex = this.menuItemsBasket.map(function(i) { return i.menuItemId; }).indexOf(menuItemId);
+        const mItemIndex = this.menuItemsBasket.map(function(i) { return i.itemId; }).indexOf(menuItemId);
         this.menuItemsBasket.splice(mItemIndex, 1);
 
         this.basketChangedMultiple.next(this.menuItemsBasket);

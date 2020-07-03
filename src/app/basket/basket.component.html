@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h6>{{ menuItem.name }}</h6>
+                                <h6>{{ menuItem.itemName }}</h6>
                             </div>
                             <div class="col">
                                 <h6 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h6>    
@@ -60,7 +60,7 @@
                             </select>    
                         </div> -->
                         <div class="col">
-                            <button type="button" class="btn btn-secondary btn-sm ml-4" (click)="removeMenuItemsFromBasket(menuItem.menuItemId)">Remove From Basket</button>
+                            <button type="button" class="btn btn-secondary btn-sm ml-4" (click)="removeMenuItemsFromBasket(menuItem.itemId)">Remove From Basket</button>
                         </div>
                     </div>
                     <br/>
