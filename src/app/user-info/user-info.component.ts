@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 
@@ -9,13 +10,17 @@ import { User } from '../models/user.model';
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss']
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoComponent implements OnInit, OnDestroy {
 
   userInfoForm: FormGroup;
   user: User = new User();
   formSubmitted = false;
+  private addressStatusChangedSubs: Subscription;
+  inDeliveryRadius = true;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
+
+  @HostListener('window:scroll', [])
 
   ngOnInit() {
 
@@ -31,7 +36,7 @@ export class UserInfoComponent implements OnInit {
       phone: [this.user.phone, [Validators.required, Validators.pattern(/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/)]],
       addressLine1: [this.user.addressLine1, Validators.required],
       addressLine2: [this.user.addressLine2, Validators.required],
-      addressLine3: [this.user.addressLine3, Validators.required],
+      addressLine3: ['Gurugram'],
     });
   }
 
@@ -49,12 +54,36 @@ export class UserInfoComponent implements OnInit {
     this.user.phone = this.userInfoForm.controls.phone.value;
     this.user.addressLine1 = this.userInfoForm.controls.addressLine1.value;
     this.user.addressLine2 = this.userInfoForm.controls.addressLine2.value;
-    this.user.addressLine3 = this.userInfoForm.controls.addressLine3.value;
 
     this.userService.updateUser(this.user.phone, this.user.addressLine1, this.user.addressLine2, this.user.addressLine3);
 
-    if (this.userService.isLoggedIn()) {
-      this.router.navigate(['/orderreview']);
-    }
+    this.addressStatusChangedSubs = this.userService.addressStatusChanged
+      .subscribe(result => {
+        console.log('addressstatuschange subscribe');
+        console.log(result);
+        if (result) {
+          this.inDeliveryRadius = true;
+          this.router.navigate(['/orderreview']);
+        } else {
+          this.inDeliveryRadius = false;
+          return;
+        }
+      });
+
+    this.userService.isInDeliveryRadius(this.user.addressLine2);
   }
-}
+
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  ngOnDestroy() {
+    if(this.addressStatusChangedSubs){
+      this.addressStatusChangedSubs.unsubscribe();
+     }
+  }
+ }

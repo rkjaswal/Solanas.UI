@@ -1,12 +1,13 @@
 <br/>
 <br/>
+<br/>
 <section class="text-center">
     <div class="container">
         <tabset #tabset>
-            <!--Soup Tab Start-->
-            <tab heading="Soup">
+            <!--Veg Soup Tab Start-->
+            <tab heading="Veg Soup">
                 <div class="row">
-                    <div class="col-md-6" *ngFor="let menuItem of menuItemsSoup">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsVegSoup">
                         <div class="card">
                             <div class="card-body">
                                 <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
@@ -26,24 +27,24 @@
                     </div>
                 </div>
                 <br/>
-                <div *ngIf="menuItemsSoup.length > 0" class="row text-center">
+                <div *ngIf="menuItemsVegSoup.length > 0" class="row text-center">
                     <div class="col-md-12">
-                        <button (click)="showTab(6)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Meals</button>
-                        <button (click)="showTab(1)" class="btn btn-link float-right">Dimsum <i class="fas fa-angle-double-right"></i></button>
+                        <button (click)="showTab(11)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Meals</button>
+                        <button (click)="showTab(1)" class="btn btn-link float-right">Non Veg Soup <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
-                <div *ngIf="menuItemsSoup.length === 0" class="row text-center">
+                <div *ngIf="menuItemsVegSoup.length === 0" class="row text-center">
                     <div class="col">
                         <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
                         <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
                     </div>
                 </div>
             </tab>
-            <!--Soup Tab End-->
-            <!--Dimsum Tab Start-->
-            <tab heading="Dimsum">
+            <!--Veg Soup Tab End-->
+            <!--Non Veg Soup Tab Start-->
+            <tab heading="Non Veg Soup">
                 <div class="row">
-                    <div class="col-md-6" *ngFor="let menuItem of menuItemsDimsum">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsNonVegSoup">
                         <div class="card">
                             <div class="card-body">
                                 <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
@@ -63,13 +64,85 @@
                     </div>
                 </div>
                 <br/>
-                <div *ngIf="menuItemsDimsum.length > 0" class="row text-center">
+                <div *ngIf="menuItemsNonVegSoup.length > 0" class="row text-center">
                     <div class="col-md-12">
-                        <button (click)="showTab(0)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Soup</button>
-                        <button (click)="showTab(2)" class="btn btn-link float-right">Starters <i class="fas fa-angle-double-right"></i></button>
+                        <button (click)="showTab(0)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Veg Soup</button>
+                        <button (click)="showTab(2)" class="btn btn-link float-right">Veg Dimsum <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
-                <div *ngIf="menuItemsDimsum.length === 0" class="row text-center">
+                <div *ngIf="menuItemsNonVegSoup.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
+                    </div>
+                </div>
+            </tab>
+            <!--NonVegSoup Tab End-->
+            <!--Dimsum Tab Start-->
+            <tab heading="Veg Dimsum">
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsVegDimsum">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
+                                <h4>{{ menuItem.itemName }}</h4>
+                                <p>{{ menuItem.itemDescription }}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.itemId)">Add To Basket</button>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div *ngIf="menuItemsVegDimsum.length > 0" class="row text-center">
+                    <div class="col-md-12">
+                        <button (click)="showTab(1)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Non Veg Soup</button>
+                        <button (click)="showTab(3)" class="btn btn-link float-right">Non Veg Dimsum <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsVegDimsum.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Non Veg Dimsum">
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsNonVegDimsum">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
+                                <h4>{{ menuItem.itemName }}</h4>
+                                <p>{{ menuItem.itemDescription }}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.itemId)">Add To Basket</button>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div *ngIf="menuItemsNonVegDimsum.length > 0" class="row text-center">
+                    <div class="col-md-12">
+                        <button (click)="showTab(2)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Veg Dimsum</button>
+                        <button (click)="showTab(4)" class="btn btn-link float-right">Veg Starters <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsNonVegDimsum.length === 0" class="row text-center">
                     <div class="col">
                         <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
                         <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
@@ -78,9 +151,9 @@
             </tab>
             <!--Dimsum Tab End-->
             <!--Starters Tab Start-->
-            <tab heading="Starters">
+            <tab heading="Veg Starters">
                 <div class="row">
-                    <div class="col-md-6" *ngFor="let menuItem of menuItemsStarters">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsVegStarters">
                         <div class="card">
                             <div class="card-body">
                                 <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
@@ -100,13 +173,48 @@
                     </div>
                 </div>
                 <br/>
-                <div *ngIf="menuItemsStarters.length > 0" class="row text-center">
+                <div *ngIf="menuItemsVegStarters.length > 0" class="row text-center">
                     <div class="col-md-12">
-                        <button (click)="showTab(1)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Dimsum</button>
-                        <button (click)="showTab(3)" class="btn btn-link float-right">Grills <i class="fas fa-angle-double-right"></i></button>
+                        <button (click)="showTab(3)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Non Veg Dimsum</button>
+                        <button (click)="showTab(5)" class="btn btn-link float-right">Non Veg Starters <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
-                <div *ngIf="menuItemsStarters.length === 0" class="row text-center">
+                <div *ngIf="menuItemsVegStarters.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Non Veg Starters">
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsNonVegStarters">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
+                                <h4>{{ menuItem.itemName }}</h4>
+                                <p>{{ menuItem.itemDescription }}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.itemId)">Add To Basket</button>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div *ngIf="menuItemsNonVegStarters.length > 0" class="row text-center">
+                    <div class="col-md-12">
+                        <button (click)="showTab(4)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Veg Starters</button>
+                        <button (click)="showTab(6)" class="btn btn-link float-right">Grills <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsNonVegStarters.length === 0" class="row text-center">
                     <div class="col">
                         <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
                         <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
@@ -139,8 +247,8 @@
                 <br/>
                 <div *ngIf="menuItemsGrills.length > 0" class="row text-center">
                     <div class="col-md-12">
-                        <button (click)="showTab(2)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Starters</button>
-                        <button (click)="showTab(4)" class="btn btn-link float-right">Mains & Curries <i class="fas fa-angle-double-right"></i></button>
+                        <button (click)="showTab(5)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Non Veg Starters</button>
+                        <button (click)="showTab(7)" class="btn btn-link float-right">Veg Mains & Curries <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
                 <div *ngIf="menuItemsGrills.length === 0" class="row text-center">
@@ -152,9 +260,9 @@
             </tab>
             <!--Grills Tab End-->
             <!--MainsCurries Tab Start-->
-            <tab heading="Mains & Curries">
+            <tab heading="Veg Mains & Curries">
                 <div class="row">
-                    <div class="col-md-6" *ngFor="let menuItem of menuItemsMainsCurries">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsVegMainsCurries">
                         <div class="card">
                             <div class="card-body">
                                 <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
@@ -174,13 +282,48 @@
                     </div>
                 </div>
                 <br/>
-                <div *ngIf="menuItemsMainsCurries.length > 0" class="row text-center">
+                <div *ngIf="menuItemsVegMainsCurries.length > 0" class="row text-center">
                     <div class="col-md-12">
-                        <button (click)="showTab(3)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Grills</button>
-                        <button (click)="showTab(5)" class="btn btn-link float-right">Sides <i class="fas fa-angle-double-right"></i></button>
+                        <button (click)="showTab(6)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Grills</button>
+                        <button (click)="showTab(8)" class="btn btn-link float-right">Non Veg Mains & Curries <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
-                <div *ngIf="menuItemsMainsCurries.length === 0" class="row text-center">
+                <div *ngIf="menuItemsVegMainsCurries.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Non Veg Mains & Curries">
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsNonVegMainsCurries">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
+                                <h4>{{ menuItem.itemName }}</h4>
+                                <p>{{ menuItem.itemDescription }}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.itemId)">Add To Basket</button>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div *ngIf="menuItemsNonVegMainsCurries.length > 0" class="row text-center">
+                    <div class="col-md-12">
+                        <button (click)="showTab(7)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Veg Mains & Curries</button>
+                        <button (click)="showTab(9)" class="btn btn-link float-right">Veg Sides <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsNonVegMainsCurries.length === 0" class="row text-center">
                     <div class="col">
                         <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
                         <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
@@ -189,9 +332,9 @@
             </tab>
             <!--MainsCurries Tab End-->
             <!--Sides Tab Start-->
-            <tab heading="Sides">
+            <tab heading="Veg Sides">
                 <div class="row">
-                    <div class="col-md-6" *ngFor="let menuItem of menuItemsSides">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsVegSides">
                         <div class="card">
                             <div class="card-body">
                                 <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
@@ -211,13 +354,48 @@
                     </div>
                 </div>
                 <br/>
-                <div *ngIf="menuItemsSides.length > 0" class="row text-center">
+                <div *ngIf="menuItemsVegSides.length > 0" class="row text-center">
                     <div class="col-md-12">
-                        <button (click)="showTab(4)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Mains & Curries</button>
-                        <button (click)="showTab(6)" class="btn btn-link float-right">Meals <i class="fas fa-angle-double-right"></i></button>
+                        <button (click)="showTab(8)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Non Veg Mains & Curries</button>
+                        <button (click)="showTab(10)" class="btn btn-link float-right">Non Veg Sides <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
-                <div *ngIf="menuItemsSides.length === 0" class="row text-center">
+                <div *ngIf="menuItemsVegSides.length === 0" class="row text-center">
+                    <div class="col">
+                        <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
+                        <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Non Veg Sides">
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let menuItem of menuItemsNonVegSides">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="../../assets/images/{{ menuItem.itemId }}.png" alt="" class="img-fluid img-thumbnail">
+                                <h4>{{ menuItem.itemName }}</h4>
+                                <p>{{ menuItem.itemDescription }}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title"><i class="fas fa-rupee-sign"></i>{{ menuItem.price }}</h5>    
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-secondary" (click)="onAddToBasket(menuItem.itemId)">Add To Basket</button>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div *ngIf="menuItemsNonVegSides.length > 0" class="row text-center">
+                    <div class="col-md-12">
+                        <button (click)="showTab(9)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Veg Sides</button>
+                        <button (click)="showTab(11)" class="btn btn-link float-right">Meals <i class="fas fa-angle-double-right"></i></button>
+                    </div>
+                </div>
+                <div *ngIf="menuItemsNonVegSides.length === 0" class="row text-center">
                     <div class="col">
                         <button class="btn btn-secondary mr-4" [routerLink]="['/home']">Home</button>
                         <button class="btn btn-secondary" [routerLink]="['/basket']">Basket</button>
@@ -251,7 +429,7 @@
                 <div *ngIf="menuItemsComboMeal.length > 0" class="row text-center">
                     <div class="col-md-12">
                         <button (click)="showTab(5)" class="btn btn-link float-left"><i class="fas fa-angle-double-left"></i> Sides</button>
-                        <button (click)="showTab(0)" class="btn btn-link float-right">Soup <i class="fas fa-angle-double-right"></i></button>
+                        <button (click)="showTab(0)" class="btn btn-link float-right">Veg Soup <i class="fas fa-angle-double-right"></i></button>
                     </div>
                 </div>
                 <div *ngIf="menuItemsComboMeal.length === 0" class="row text-center">

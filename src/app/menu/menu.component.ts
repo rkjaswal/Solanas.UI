@@ -17,12 +17,17 @@ export class MenuComponent implements OnInit {
     @ViewChild('tabset', {static: false}) tabset: TabsetComponent;
 
     mItems: MenuItem[] = [];
-    menuItemsSoup: MenuItem[] = [];
-    menuItemsDimsum: MenuItem[] = [];
-    menuItemsStarters: MenuItem[] = [];
+    menuItemsVegSoup: MenuItem[] = [];
+    menuItemsNonVegSoup: MenuItem[] = [];
+    menuItemsVegDimsum: MenuItem[] = [];
+    menuItemsNonVegDimsum: MenuItem[] = [];
+    menuItemsVegStarters: MenuItem[] = [];
+    menuItemsNonVegStarters: MenuItem[] = [];
     menuItemsGrills: MenuItem[] = [];
-    menuItemsMainsCurries: MenuItem[] = [];
-    menuItemsSides: MenuItem[] = [];
+    menuItemsVegMainsCurries: MenuItem[] = [];
+    menuItemsNonVegMainsCurries: MenuItem[] = [];
+    menuItemsVegSides: MenuItem[] = [];
+    menuItemsNonVegSides: MenuItem[] = [];
     menuItemsComboMeal: MenuItem[] = [];
 
     constructor(private menuService: MenuService, private basketService: BasketService, private router: Router) { }
@@ -30,12 +35,17 @@ export class MenuComponent implements OnInit {
     ngOnInit() {
 
         this.mItems = this.menuService.getMenuItems();
-        this.menuItemsSoup = this.mItems.filter(i => i.item_CategoryId === 281084 || i.item_CategoryId === 281085);
-        this.menuItemsDimsum = this.mItems.filter(i => i.item_CategoryId === 281086 || i.item_CategoryId === 281087);
-        this.menuItemsStarters = this.mItems.filter(i => i.item_CategoryId === 281088 || i.item_CategoryId === 281089);
+        this.menuItemsVegSoup = this.mItems.filter(i => i.item_CategoryId === 281084);
+        this.menuItemsNonVegSoup = this.mItems.filter(i => i.item_CategoryId === 281085);
+        this.menuItemsVegDimsum = this.mItems.filter(i => i.item_CategoryId === 281086);
+        this.menuItemsNonVegDimsum = this.mItems.filter(i => i.item_CategoryId === 281087);
+        this.menuItemsVegStarters = this.mItems.filter(i => i.item_CategoryId === 281088);
+        this.menuItemsNonVegStarters = this.mItems.filter(i => i.item_CategoryId === 281089);
         this.menuItemsGrills = this.mItems.filter(i => i.item_CategoryId === 281090 || i.item_CategoryId === 281091);
-        this.menuItemsMainsCurries = this.mItems.filter(i => i.item_CategoryId === 281093 || i.item_CategoryId === 281094);
-        this.menuItemsSides = this.mItems.filter(i => i.item_CategoryId === 281096 || i.item_CategoryId === 281097);
+        this.menuItemsVegMainsCurries = this.mItems.filter(i => i.item_CategoryId === 281093);
+        this.menuItemsNonVegMainsCurries = this.mItems.filter(i => i.item_CategoryId === 281094);
+        this.menuItemsVegSides = this.mItems.filter(i => i.item_CategoryId === 281096);
+        this.menuItemsNonVegSides = this.mItems.filter(i => i.item_CategoryId === 281097);
         this.menuItemsComboMeal = this.mItems.filter(i => i.item_CategoryId === 7);
     }
 

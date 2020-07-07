@@ -1,9 +1,11 @@
 import { Injectable, OnInit, OnDestroy, NgZone } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'angularx-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { Subscription, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
+import { Map } from '../models/map.model';
 
 @Injectable({providedIn: 'root'})
 
@@ -12,9 +14,12 @@ export class UserService implements OnInit, OnDestroy {
     user: User = new User();
     loginStatusChanged = new Subject<boolean>();
     loggedIn = false;
+    addressStatusChanged = new Subject<boolean>();
+    addressInDeliveryRadius = true;
     private socialLoginSubs: Subscription;
+    private addressStatusSubs: Subscription;
 
-    constructor(private authService: AuthService, private router: Router, private zone: NgZone) {}
+    constructor(private authService: AuthService, private router: Router, private zone: NgZone, private httpClient: HttpClient) {}
 
     ngOnInit() {
     }
@@ -103,6 +108,22 @@ export class UserService implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.socialLoginSubs.unsubscribe();
+        this.addressStatusSubs.unsubscribe();
+    }
+
+    isInDeliveryRadius(destination): void {
+        this.addressStatusSubs = this.httpClient.get<Map>('https://apisolanas.appspot.com/api/map/distance?destination=' + destination)
+        .subscribe(resData => {
+            console.log(resData.distance);
+            if (resData.distance > 7000) {
+                console.log(resData.distance > 7000);
+                this.addressStatusChanged.next(false);
+            } else {
+                this.addressStatusChanged.next(true);
+            }
+        }, error => {
+             alert('Sorry, we could not validate the address entered by you, please check the address and try again.');
+        });
     }
 }
 

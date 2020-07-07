@@ -3,8 +3,12 @@
 <br/>
 <section>
     <div class="container">
+        <div class="alert alert-danger" role="alert">
+          <p *ngIf="inDeliveryRadius">We deliver within 7 km from our Restaurant in Hongkong Bazaar, Gurugram. Please check your address is within our delivery circle.</p>
+          <p *ngIf="!inDeliveryRadius">Sorry, the address entered by you is outside our delivery circle. Please enter a delivery address within 7 km from our Restaurant in Hongkong Bazaar, Gurugram.</p>
+        </div>      
         <form [formGroup]="userInfoForm" (ngSubmit)="onFormSubmit()">
-            <div class="form-group row">
+            <!-- <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label font-weight-bold">Name</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name" readonly="readonly">
@@ -15,7 +19,7 @@
               <div class="col-sm-10">
                 <input type="text" class="form-control" id="email" formControlName="email" placeholder="Email" readonly="readonly">
               </div>
-            </div>
+            </div> -->
             <div class="form-group row">
               <label for="phone" class="col-sm-2 col-form-label font-weight-bold">Phone</label>
               <div class="col-sm-10">
@@ -39,21 +43,18 @@
               <div class="col-sm-10">
                 <input type="text" class="form-control" [ngClass]="{ 'is-invalid': formSubmitted && f.addressLine2.invalid }" id="addressLine2" formControlName="addressLine2" placeholder="Sector">
                 <div *ngIf="formSubmitted && f.addressLine2.invalid" class="invalid-feedback">
-                    Please enter your sector number
+                    Please enter your sector number, locality or nearest landmark
                 </div>
               </div>
             </div>
             <div class="form-group row">
               <label for="addressLine3" class="col-sm-2 col-form-label font-weight-bold">Address Line 3</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': formSubmitted && f.addressLine3.invalid }" id="addressLine3" formControlName="addressLine3" placeholder="Locality / Nearest Landmark">
-                <div *ngIf="formSubmitted && f.addressLine3.invalid" class="invalid-feedback">
-                    Please enter your locality or nearest landmark
-                </div>
+                <input type="text" class="form-control" id="addressLine3" formControlName="addressLine3" placeholder="City" readonly="readonly">
               </div>
             </div>
-          <div class="form-group col-lg-6">
-                <button class="btn btn-warning">Continue To Checkout</button>
+            <div class="form-group col-lg-6">
+                <button class="btn btn-warning" (click)="gotoTop()">Check Delivery Address</button>
             </div>        
         </form>
     </div>

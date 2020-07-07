@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuItem } from '../models/menu-item.model';
 import { BasketService } from '../services/basket.service';
 import { UserService } from '../services/user.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-basket',
@@ -37,5 +38,9 @@ export class BasketComponent implements OnInit {
 
   isLoggedIn() {
     return this.userService.isLoggedIn();
+  }
+
+  getUserName() {
+    return this.userService.getUser().name;
   }
 }

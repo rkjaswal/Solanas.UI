@@ -39,40 +39,11 @@ export class MenuService implements OnInit, OnDestroy {
                 });
             }
         }, error => {
-            // alert('Sorry, it seems we encountered an error, you will not be able to place online orders, please try after some time.');
+             alert('Sorry, it seems we encountered an error, you will not be able to place online orders, please try after some time.');
         });
 
         return this.menuItems;
     }
-
-    getMenuItemsFromPetPoojaApi(): MenuItem[] {
-        this.menuChangedSubs = this.httpClient.post('https://api.petpooja.com/V1/pendingorders/mapped_restaurant_menus/', 
-        {
-            "app_key":"yfjzntocg5krpq3xh67v10ws4uebmd28",
-            "app_secret":"28b1b6360b43785a995290762de494047e4adf63",
-            "access_token":"7a2159959d376d12acb46db2090b8d2e7981c19e",
-            "restID":"e1zb0ksm",
-            "data_type":"json"
-        }, {headers})
-        .subscribe(
-            (resData) => {
-                console.log("POST call successful value returned in body", 
-                resData);
-            },
-            response => {
-                console.log("POST call in error", response);
-            },
-            () => {
-                console.log("The POST observable is now completed.");
-            });
-        return this.menuItems;
-    }
-
-    // getMenuItemsFromFirestore(): MenuItem[] {
-    //     var mItems = this.firestore.collection('menuitems').snapshotChanges();
-    //     console.log(mItems);
-    //     return this.menuItems;
-    // }
 
     getMenuItems() {
         return this.menuItems;

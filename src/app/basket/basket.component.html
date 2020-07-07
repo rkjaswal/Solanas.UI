@@ -3,6 +3,7 @@
 <br/>
 <section>
     <div class="container">
+        <h5 *ngIf="isLoggedIn()">Hello, {{ getUserName() }}</h5>
         <br/>
         <div *ngIf="menuItemsBasket.length === 0" class="text-center">
             <h5>Your basket is empty!</h5>
